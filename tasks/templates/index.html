@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container_login">
+
+    </div>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header text-white">
+                        <h3>Mi To-Do</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="todoForm">
+                            <div class="mb-3">
+                                <label for="taskInput" class="form-label">Nueva tarea</label>
+                                <input type="text" class="form-control" id="taskInput" placeholder="Escribe una tarea..." required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Agregar tarea</button>
+                        </form>
+                    </div>
+                    <ul class="list-group list-group-flush" id="todoList">
+                        
+                    </ul>
+                    <div class="card-footer text-center text-white">
+                        <small>Keren Bermeo</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+     <script src="{% static 'todo.js' %}"></script>
+   
+</body>
+</html>
