@@ -1,0 +1,26 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}Detalle de Tarea{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h2>{{ task.title }}</h2>
+            <div>
+                {% if not task.completed %}
+                    <a href="{% url 'task_complete' task.pk %}" class="btn btn-success me-2">Marcar como completada</a>
+                {% endif %}
+                <a href="{% url 'task_update' task.pk %}" class="btn btn-warning me-2">Editar</a>
+                <a href="{% url 'task_delete' task.pk %}" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ task.description|linebreaks }}</p>
+            <div class="d-flex justify-content-between">
+                <small class="text-muted">Estado: {% if task.completed %}Completada{% else %}Pendiente{% endif %}</small>
+                <small class="text-muted">Última actualización: {{ task.updated_at|date:"d/m/Y H:i" }}</small>
+            </div>
+        </div>
+    </div>
+    <a href="{% url 'task_list' %}" class="btn btn-secondary mt-3">Volver a la lista</a>
+{% endblock %}

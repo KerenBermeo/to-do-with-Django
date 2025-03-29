@@ -1,0 +1,69 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center mb-4">Registro</h1>
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="id_username" class="form-label">Nombre de usuario</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.username.errors }}
+                        </div>
+                    {% endif %}
+                    <div class="form-text">Requerido. 150 caracteres o menos. Letras, dígitos y @/./+/-/_ solamente.</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_email" class="form-label">Correo electrónico</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.email.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_password1" class="form-label">Contraseña</label>
+                    {{ form.password1 }}
+                    {% if form.password1.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.password1.errors }}
+                        </div>
+                    {% endif %}
+                    <div class="form-text">
+                        <ul>
+                            <li>Tu contraseña no puede ser demasiado similar a tu otra información personal.</li>
+                            <li>Tu contraseña debe contener al menos 8 caracteres.</li>
+                            <li>Tu contraseña no puede ser una contraseña comúnmente utilizada.</li>
+                            <li>Tu contraseña no puede ser completamente numérica.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_password2" class="form-label">Confirmación de contraseña</label>
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.password2.errors }}
+                        </div>
+                    {% endif %}
+                    <div class="form-text">Introduce la misma contraseña que antes, para verificación.</div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+            </form>
+            <div class="mt-3 text-center">
+                ¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión aquí</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
